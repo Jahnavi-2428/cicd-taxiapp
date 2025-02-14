@@ -47,11 +47,10 @@ environment {
                      def uploadSpec = """{
                           "files": [
                             {
-                              "pattern": "/home/ubuntu/Jenkins/workspace/taxi-booking/taxi-booking/target/(*)",
+                              "pattern": "${env.WORKSPACE}/taxi-booking/target/(*)",
                               "target": "taxi-libs-release-local/{1}",
-                              "flat": "false",
+                              "flat": "true",
                               "props" : "${properties}",
-                              "exclusions": [ "*.sha1", "*.md5"]
                             }
                          ]
                      }"""
