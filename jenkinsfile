@@ -44,13 +44,14 @@ environment {
                     echo '<--------------- Jar Publish Started --------------->'
                      def server = Artifactory.newServer url:registry+"/artifactory" ,  credentialsId:"jfrog-cred"
                      def properties = "buildid=${env.BUILD_ID},commitid=${GIT_COMMIT}";
+                     echo "Workspace Path: ${env.WORKSPACE}"
                      def uploadSpec = """{
                           "files": [
                             {
                               "pattern": "${env.WORKSPACE}/taxi-booking/target/(*)",
                               "target": "taxi-libs-release-local/{1}",
                               "flat": "true",
-                              "props" : "${properties}",
+                              "props" : "${properties}"
                             }
                          ]
                      }"""
